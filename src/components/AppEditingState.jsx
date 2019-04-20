@@ -4,19 +4,27 @@ function AppEditingState(props) {
   return (
     <React.Fragment>
       <h1>Editing State</h1>
-      id: {props.meal.id} <br />
-      name: {props.meal.name} <br />
-      calories: {props.meal.calories} <br />
+      
       {/* Edit Form */}
       <div className="form-container" id="meal-form-container">
         <div className="form-title">Add Meals</div>
 
         <form id="meal-form">
           {/* Form Fields */}
-          <input type="hidden" id="meal-id" value="" />
+          <input type="hidden" id="meal-id" defaultValue={props.meal.id} />
           <div className="input-container">
-            <input type="text" id="meal-name" placeholder="Meal Name" />
-            <input type="number" id="meal-calories" placeholder="Meal Calories" />
+            <input
+              type="text"
+              id="meal-name"
+              defaultValue={props.meal.name}
+              placeholder="Meal Name"
+            />
+            <input
+              type="number"
+              id="meal-calories"
+              defaultValue={props.meal.calories}
+              placeholder="Meal Calories"
+            />
           </div>
 
           {/* Form Buttons */}
