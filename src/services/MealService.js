@@ -1,8 +1,4 @@
-const Meal = function(id, name, calories) {
-  this.id = id
-  this.name = name
-  this.calories = calories
-}
+import Meal from "../model/Meal"
 
 const MealService = (function() {
   const SERVER_URL = "http://127.0.0.1:3001"

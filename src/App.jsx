@@ -16,11 +16,17 @@ class App extends Component {
     }
   }
 
-  getAppAddingState = () => <AppAddingState onSetEditingState={this.handleOnEdit} />
+  getAppAddingState = () => (
+    <AppAddingState
+      onSetEditingState={this.handleOnEdit}
+      onSetLoadingState={this.handleLoading}
+      onSetAddingState={this.handleOnAdd}
+    />
+  )
 
   getAppEditingState = mealToEdit => <AppEditingState meal={mealToEdit} />
 
-  getAppLoadingState = () => <AppLoadingState />
+  getAppLoadingState = loadingMsg => <AppLoadingState msg={loadingMsg} />
 
   getAppCantConnectState = () => <AppCantConnectState />
 
@@ -30,15 +36,15 @@ class App extends Component {
     })
   }
 
-  displayEditState = (mealToEdit) => {
+  displayEditState = mealToEdit => {
     this.setState({
       currentState: this.getAppEditingState(mealToEdit)
     })
   }
 
-  displayLoadingState = () => {
+  displayLoadingState = msg => {
     this.setState({
-      currentState: this.getAppLoadingState()
+      currentState: this.getAppLoadingState(msg)
     })
   }
 
@@ -56,6 +62,14 @@ class App extends Component {
         this.displayEditState(meal)
       })
       .catch(err => console.log(err))
+  }
+
+  handleLoading = (msg, e) => {
+    this.displayLoadingState(msg)
+  }
+
+  handleOnAdd = e => {
+    this.displayAddState()
   }
 
   render() {
@@ -83,7 +97,9 @@ class App extends Component {
               <button onClick={this.displayLoadingState}>Loading State</button>
             </li>
             <li style={{ display: "inline-block", margin: "0 8px" }}>
-              <button onClick={this.displayCantConnectState}>Cant Connect State</button>
+              <button onClick={this.displayCantConnectState}>
+                Cant Connect State
+              </button>
             </li>
           </ul>
         </div>
