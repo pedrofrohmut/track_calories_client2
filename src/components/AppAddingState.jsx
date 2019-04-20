@@ -28,8 +28,8 @@ class AppAddingState extends Component {
       .then(meals => {
         // updateMealsList
         this.setState({ meals })
-
         // updateTotalCalories
+        // ## TODO ##
       })
       .catch(err => console.log(err))
   }
@@ -38,8 +38,6 @@ class AppAddingState extends Component {
     return (
       <React.Fragment>
         <h1>Adding State</h1>
-        <button onClick={this.props.onSetEditingState}>EditState</button>
-        <h3>{this.props.test}</h3>
 
         {/* Add Form */}
         <div className="form-container" id="meal-form-container">
@@ -72,8 +70,7 @@ class AppAddingState extends Component {
 
         {/* Meals List - show when truthy no else */}
         {this.state.meals.length > 0 && (
-          <ul id="meals-list" className="meals-list">
-            
+          <ul id="meals-list" className="meals-list">            
             {this.state.meals.map((meal, i) => 
               <li key={i}>
                 <strong>{meal.name}</strong> <em>{meal.calories} Calories</em>
@@ -82,25 +79,6 @@ class AppAddingState extends Component {
                 </a>
               </li>  
             )}
-
-            {/* <li id="item-0">
-              <strong>Steak Dinner:</strong> <em>1200 Calories</em>
-              <a className="edit-meal-link" href="#" data-meal-id="">
-                <i className="fa fa-pencil" />
-              </a>
-            </li>
-            <li id="item-0">
-              <strong>Cookie:</strong> <em>400 Calories</em>
-              <a className="edit-meal-link" href="#" data-meal-id="">
-                <i className="fa fa-pencil" />
-              </a>
-            </li>
-            <li id="item-0">
-              <strong>Eggs:</strong> <em>300 Calories</em>
-              <a className="edit-meal-link" href="#" data-meal-id="">
-                <i className="fa fa-pencil" />
-              </a>
-            </li> */}
           </ul>
         )}
       </React.Fragment>

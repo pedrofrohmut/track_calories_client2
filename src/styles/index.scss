@@ -47,23 +47,22 @@ button {
 }
 
 /* Medium */
-@media(min-width: 481px) {
+@media (min-width: 481px) {
   .container {
     width: 95%;
   }
 }
 
 /* Large */
-@media(min-width: 769px) {
-  
+@media (min-width: 769px) {
 }
 
 /* Extra Large*/
-@media(min-width: 1200px) {
-  
+@media (min-width: 1200px) {
 }
 
 // Components SCSS
 @import "../App";
 @import "../components/navbar";
-@import "../components/AppAddingState"
+@import "../components/AppAddingState";
+@import "../components/AppEditingState";

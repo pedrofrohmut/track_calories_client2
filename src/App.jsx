@@ -30,9 +30,9 @@ class App extends Component {
     })
   }
 
-  displayEditState = () => {
+  displayEditState = (mealToEdit) => {
     this.setState({
-      currentState: this.getAppEditingState()
+      currentState: this.getAppEditingState(mealToEdit)
     })
   }
 
@@ -52,7 +52,9 @@ class App extends Component {
     e.preventDefault()
     this.displayLoadingState()
     MealService.getMeal(mealId)
-      .then(meal => this.displayEditState(meal))
+      .then(meal => {
+        this.displayEditState(meal)
+      })
       .catch(err => console.log(err))
   }
 
