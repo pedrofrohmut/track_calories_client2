@@ -107,99 +107,6 @@ button:hover {
           box-shadow: #23a072 0px 0px 7px 4px;
 }
 
-.form-container .add-btn {
-  background-color: #4747d1;
-}
-
-.total-calories-header {
-  text-align: center;
-  margin: 1em auto 0.4em;
-  font-size: 49px;
-  font-family: "Arizonia", cursive;
-}
-
-.meals-list {
-  margin: 2em auto 2em;
-  list-style: none;
-  font-size: 16px;
-  border-top: 1px solid #e0e0e0;
-  padding: 0;
-  width: 100%;
-}
-
-.meals-list li {
-  border-bottom: 1px solid #e0e0e0;
-  padding: 10px 20px;
-  line-height: 1.5rem;
-}
-
-.meals-list li:nth-child(odd) {
-  background-color: #ffffff;
-}
-
-.meals-list li:nth-child(even) {
-  background-color: #f4f4f4bb;
-}
-
-.meals-list i {
-  line-height: 1.5rem;
-  float: right;
-}
-
-@media (min-width: 481px) {
-  .form-container {
-    border-radius: 0.3em;
-    -webkit-box-shadow: #e3e3e3 3px 2px 7px 3px;
-            box-shadow: #e3e3e3 3px 2px 7px 3px;
-  }
-}
-
-@media (min-width: 769px) {
-  .form-container .input-container {
-    -ms-grid-columns: 1fr 1fr;
-        grid-template-columns: 1fr 1fr;
-    grid-column-gap: 25px;
-  }
-}
-
-.form-container {
-  padding: 23px 25px 32px;
-}
-
-.form-container .form-title {
-  color: #333;
-  font-size: 52px;
-  margin-bottom: 32px;
-  font-family: "Arizonia", cursive;
-}
-
-.form-container .input-container {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr;
-      grid-template-columns: 1fr;
-  grid-row-gap: 7px;
-}
-
-.form-container input {
-  border: 0;
-  border-bottom: 3px solid #888;
-  padding: 7px 12px;
-  font-size: 17px;
-  width: 100%;
-  margin-bottom: 32px;
-}
-
-.form-container .invalid-input {
-  -webkit-box-shadow: #f55 0px 0px 7px 4px;
-          box-shadow: #f55 0px 0px 7px 4px;
-}
-
-.form-container .valid-input {
-  -webkit-box-shadow: #23a072 0px 0px 7px 4px;
-          box-shadow: #23a072 0px 0px 7px 4px;
-}
-
 .form-container .button-container {
   display: inline-block;
 }
@@ -291,4 +198,98 @@ button:hover {
 
 .alert-fail {
   background-color: #faa1a1;
+}
+
+.form-container {
+  padding: 23px 25px 32px;
+}
+
+.form-container .form-title {
+  color: #333;
+  font-size: 52px;
+  margin-bottom: 32px;
+  font-family: "Arizonia", cursive;
+}
+
+.form-container .input-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  grid-row-gap: 7px;
+}
+
+.form-container input {
+  border: 0;
+  border-bottom: 3px solid #888;
+  padding: 7px 12px;
+  font-size: 17px;
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+.form-container .invalid-input {
+  -webkit-box-shadow: #f55 0px 0px 7px 4px;
+          box-shadow: #f55 0px 0px 7px 4px;
+}
+
+.form-container .valid-input {
+  -webkit-box-shadow: #23a072 0px 0px 7px 4px;
+          box-shadow: #23a072 0px 0px 7px 4px;
+}
+
+.form-container .add-btn {
+  background-color: #4747d1;
+}
+
+@media (min-width: 481px) {
+  .form-container {
+    border-radius: 0.3em;
+    -webkit-box-shadow: #e3e3e3 3px 2px 7px 3px;
+            box-shadow: #e3e3e3 3px 2px 7px 3px;
+  }
+}
+
+@media (min-width: 769px) {
+  .form-container .input-container {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+    grid-column-gap: 25px;
+  }
+}
+
+.total-calories-header,
+.empty-db-msg {
+  text-align: center;
+  margin: 1em auto 0.4em;
+  font-size: 49px;
+  font-family: "Arizonia", cursive;
+}
+
+.meals-list {
+  margin: 2em auto 2em;
+  list-style: none;
+  font-size: 16px;
+  border-top: 1px solid #e0e0e0;
+  padding: 0;
+  width: 100%;
+}
+
+.meals-list li {
+  border-bottom: 1px solid #e0e0e0;
+  padding: 10px 20px;
+  line-height: 1.5rem;
+}
+
+.meals-list li:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+.meals-list li:nth-child(even) {
+  background-color: #f4f4f4bb;
+}
+
+.meals-list i {
+  line-height: 1.5rem;
+  float: right;
 }
