@@ -15,7 +15,7 @@ class AddForm extends Component {
 
   render() {
     return (
-      <div className="form-container">
+      <div className="add-form-container">
         <div className="form-title">Add Meals</div>
 
         <form onSubmit={this.handleSubmit}>

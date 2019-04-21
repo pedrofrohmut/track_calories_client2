@@ -200,18 +200,18 @@ button:hover {
   background-color: #faa1a1;
 }
 
-.form-container {
+.add-form-container {
   padding: 23px 25px 32px;
 }
 
-.form-container .form-title {
+.add-form-container .form-title {
   color: #333;
   font-size: 52px;
   margin-bottom: 32px;
   font-family: "Arizonia", cursive;
 }
 
-.form-container .input-container {
+.add-form-container .input-container {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr;
@@ -219,7 +219,7 @@ button:hover {
   grid-row-gap: 7px;
 }
 
-.form-container input {
+.add-form-container input {
   border: 0;
   border-bottom: 3px solid #888;
   padding: 7px 12px;
@@ -228,22 +228,22 @@ button:hover {
   margin-bottom: 32px;
 }
 
-.form-container .invalid-input {
+.add-form-container .invalid-input {
   -webkit-box-shadow: #f55 0px 0px 7px 4px;
           box-shadow: #f55 0px 0px 7px 4px;
 }
 
-.form-container .valid-input {
+.add-form-container .valid-input {
   -webkit-box-shadow: #23a072 0px 0px 7px 4px;
           box-shadow: #23a072 0px 0px 7px 4px;
 }
 
-.form-container .add-btn {
+.add-form-container .add-btn {
   background-color: #4747d1;
 }
 
 @media (min-width: 481px) {
-  .form-container {
+  .add-form-container {
     border-radius: 0.3em;
     -webkit-box-shadow: #e3e3e3 3px 2px 7px 3px;
             box-shadow: #e3e3e3 3px 2px 7px 3px;
@@ -251,7 +251,7 @@ button:hover {
 }
 
 @media (min-width: 769px) {
-  .form-container .input-container {
+  .add-form-container .input-container {
     -ms-grid-columns: 1fr 1fr;
         grid-template-columns: 1fr 1fr;
     grid-column-gap: 25px;
@@ -292,4 +292,78 @@ button:hover {
 .meals-list i {
   line-height: 1.5rem;
   float: right;
+}
+
+.edit-form-container {
+  padding: 23px 25px 32px;
+}
+
+.edit-form-container .form-title {
+  color: #333;
+  font-size: 52px;
+  margin-bottom: 32px;
+  font-family: "Arizonia", cursive;
+}
+
+.edit-form-container .input-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  grid-row-gap: 7px;
+}
+
+.edit-form-container input {
+  border: 0;
+  border-bottom: 3px solid #888;
+  padding: 7px 12px;
+  font-size: 17px;
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+.edit-form-container .invalid-input {
+  -webkit-box-shadow: #f55 0px 0px 7px 4px;
+          box-shadow: #f55 0px 0px 7px 4px;
+}
+
+.edit-form-container .valid-input {
+  -webkit-box-shadow: #23a072 0px 0px 7px 4px;
+          box-shadow: #23a072 0px 0px 7px 4px;
+}
+
+.edit-form-container button {
+  margin-right: 15px;
+}
+
+.edit-form-container button:last-child {
+  margin-right: 0px;
+}
+
+.edit-form-container .update-btn {
+  background-color: #23a072;
+}
+
+.edit-form-container .delete-btn {
+  background-color: #f55;
+}
+
+.edit-form-container .back-btn {
+  background-color: #64505a;
+}
+
+@media (min-width: 481px) {
+  .edit-form-container {
+    border-radius: 0.3em;
+    -webkit-box-shadow: #e3e3e3 3px 2px 7px 3px;
+            box-shadow: #e3e3e3 3px 2px 7px 3px;
+  }
+}
+
+@media (min-width: 769px) {
+  .edit-form-container .input-container {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+    grid-column-gap: 25px;
+  }
 }

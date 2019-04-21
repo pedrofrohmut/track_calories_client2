@@ -1,4 +1,4 @@
-.add-form-container {
+.edit-form-container {
   padding: 23px 25px 32px;
 
   .form-title {
@@ -31,20 +31,36 @@
     box-shadow: #23a072 0px 0px 7px 4px;
   }
 
-  .add-btn {
-    background-color: #4747d1;
+  button {
+    margin-right: 15px;
+
+    &:last-child {
+      margin-right: 0px;
+    }
+  }
+
+  .update-btn {
+    background-color: #23a072;
+  }
+
+  .delete-btn {
+    background-color: #f55;
+  }
+
+  .back-btn {
+    background-color: #64505a;
   }
 }
 
 @media (min-width: 481px) {
-  .add-form-container {
+  .edit-form-container {
     border-radius: 0.3em;
     box-shadow: #e3e3e3 3px 2px 7px 3px;
   }
 }
 
-@media (min-width: 769px) {
-  .add-form-container {
+@media(min-width: 769px) {
+  .edit-form-container {
     .input-container {
       grid-template-columns: 1fr 1fr;
       grid-column-gap: 25px;
