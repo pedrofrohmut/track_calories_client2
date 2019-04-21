@@ -86,27 +86,6 @@ class App extends Component {
           </div>
         </nav>
 
-        {/* TEMP: State Change Buttons - KEEP IT FOR TESTING */}
-        <div className="container">
-          <ul style={{ margin: "25px 0" }}>
-            <li style={{ display: "inline-block", margin: "0 8px" }}>
-              <button onClick={this.displayAddState}>Add State</button>
-            </li>
-            <li style={{ display: "inline-block", margin: "0 8px" }}>
-              <button onClick={this.displayEditState}>Edit State</button>
-            </li>
-            <li style={{ display: "inline-block", margin: "0 8px" }}>
-              <button onClick={this.displayLoadingState}>Loading State</button>
-            </li>
-            <li style={{ display: "inline-block", margin: "0 8px" }}>
-              <button onClick={this.displayCantConnectState}>
-                Cant Connect State
-              </button>
-            </li>
-          </ul>
-        </div>
-        {/* TEMP: State Change Buttons - KEEP IT FOR TESTING */}
-
         {/* Content Container */}
         <main className="container">{this.state.currentState}</main>
       </React.Fragment>

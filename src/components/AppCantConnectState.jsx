@@ -3,8 +3,6 @@ import React from "react"
 function AppCantConnectState() {
   return (
     <React.Fragment>
-      <h1>App Cant Connect State</h1>
-      
       <div className="cant-connect-container" id="cant-connect">
         <h3>
           <i className="fa fa-frown-o" /> Unable to connect

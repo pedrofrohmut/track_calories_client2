@@ -5,16 +5,10 @@ function AppLoadingState(props) {
   console.log(props)
   return (
     <React.Fragment>
-      <h1>Loading State</h1>
-
-      {/* Loading Img + Message */}
+      {/* Loading: Img + Message */}
       <div className="loading-container" id="loading">
         <img src={loading} alt="loading..." title="loading...." />
-        { props.msg ? (
-          <p>{props.msg}</p>
-        ) : (
-          <p>Loading...</p>
-        )}
+        {props.msg ? <p>{props.msg}</p> : <p>Loading...</p>}
       </div>
     </React.Fragment>
   )
