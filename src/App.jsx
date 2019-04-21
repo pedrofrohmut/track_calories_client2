@@ -16,11 +16,13 @@ class App extends Component {
     }
   }
 
-  getAppAddingState = () => (
+  getAppAddingState = (alertMsg, alertType) => (
     <AppAddingState
       onSetEditingState={this.handleOnEdit}
       onSetLoadingState={this.handleLoading}
       onSetAddingState={this.handleOnAdd}
+      alertMsg={alertMsg}
+      alertType={alertType}
     />
   )
 
@@ -30,9 +32,9 @@ class App extends Component {
 
   getAppCantConnectState = () => <AppCantConnectState />
 
-  displayAddState = () => {
+  displayAddState = (msg, type) => {
     this.setState({
-      currentState: this.getAppAddingState()
+      currentState: this.getAppAddingState(msg, type)
     })
   }
 
@@ -68,8 +70,8 @@ class App extends Component {
     this.displayLoadingState(msg)
   }
 
-  handleOnAdd = e => {
-    this.displayAddState()
+  handleOnAdd = (msg, type, e) => {
+    this.displayAddState(msg, type)
   }
 
   render() {
