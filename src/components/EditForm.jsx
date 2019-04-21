@@ -12,29 +12,38 @@ class EditForm extends Component {
     super(props)
     this.state = {
       meal: props.meal
+      // mealId: props.meal.id,
+      // mealName: props.meal.name,
+      // mealCalories: props.meal.calories
     }
   }
 
-  handleInputChange(event) {
-    const name = event.target.name
+  handleInputChange = event => {
+    const name = event.target.name.split(".")[1]
     const value = event.target.value
+
+    console.log(name, value)
+
     this.setState({
-      [name]: value
+      meal: { [name]: value }
     })
   }
 
-  handleSubmit(event) {}
+  handleSubmit = event => {}
 
   render() {
+    // const { mealId, mealName, mealCalories } = this.state
+
     const { meal } = this.state
+
+    console.log("MEAL", meal)
+
     return (
       <div className="edit-form-container">
         <div className="form-title">Add Meals</div>
 
         <form onSubmit={this.handleSubmit}>
           {/* Form Fields */}
-          {/* <input type="hidden"  /> */}
-
           <div className="input-container">
             <input
               type="text"
