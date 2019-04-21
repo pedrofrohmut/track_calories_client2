@@ -11,32 +11,22 @@ class EditForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      meal: props.meal
-      // mealId: props.meal.id,
-      // mealName: props.meal.name,
-      // mealCalories: props.meal.calories
+      mealId: props.meal.id,
+      mealName: props.meal.name,
+      mealCalories: props.meal.calories
     }
   }
 
   handleInputChange = event => {
-    const name = event.target.name.split(".")[1]
+    const name = event.target.name
     const value = event.target.value
-
-    console.log(name, value)
-
-    this.setState({
-      meal: { [name]: value }
-    })
+    this.setState({ [name]: value })
   }
 
   handleSubmit = event => {}
 
   render() {
-    // const { mealId, mealName, mealCalories } = this.state
-
-    const { meal } = this.state
-
-    console.log("MEAL", meal)
+    const { mealName, mealCalories } = this.state
 
     return (
       <div className="edit-form-container">
@@ -47,15 +37,15 @@ class EditForm extends Component {
           <div className="input-container">
             <input
               type="text"
-              name="meal.name"
-              value={meal.name}
+              name="mealName"
+              value={mealName}
               onChange={this.handleInputChange}
               placeholder="Meal Name"
             />
             <input
               type="number"
-              name="meal.calories"
-              value={meal.calories}
+              name="mealCalories"
+              value={mealCalories}
               onChange={this.handleInputChange}
               placeholder="Meal Calories"
             />
