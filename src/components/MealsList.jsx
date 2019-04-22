@@ -38,11 +38,7 @@ class MealsList extends Component {
               {this.state.meals.map((meal, i) => (
                 <li key={i}>
                   <strong>{meal.name}</strong> <em>{meal.calories} Calories</em>
-                  <a
-                    href="#"
-                    className="edit-meal"
-                    onClick={e => this.props.onSetEditingState(meal.id, "Teste MSG", config.ALERT_SUCCESS, e)}
-                  >
+                  <a href="#" className="edit-meal" onClick={e => this.handleClick(meal.id, e)}>
                     Edit <i className="fa fa-pencil" />
                   </a>
                 </li>
@@ -52,6 +48,14 @@ class MealsList extends Component {
         )}
       </>
     )
+  } // render
+
+  handleClick = (mealId, event) => {
+    event.preventDefault()
+    this.props.onSetLoadingState("Getting Meal From Database...")
+    MealService.getMeal(mealId)
+      .then(meal => this.props.onSetEditingState(meal))
+      .catch(err => console.log(err))
   }
 }
 

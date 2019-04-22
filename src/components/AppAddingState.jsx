@@ -13,7 +13,7 @@ function AppAddingState(props) {
       />
 
       {/* Total Calories + Meals List */}
-      <MealsList onSetEditingState={props.onSetEditingState} />
+      <MealsList onSetLoadingState={props.onSetLoadingState} onSetEditingState={props.onSetEditingState} />
     </>
   )
 }
