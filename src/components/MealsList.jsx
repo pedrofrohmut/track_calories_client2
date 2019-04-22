@@ -1,8 +1,6 @@
 import React, { Component } from "react"
 import MealService from "../services/MealService"
 
-const config = require("../cofig/config")
-
 class MealsList extends Component {
   constructor(props) {
     super(props)

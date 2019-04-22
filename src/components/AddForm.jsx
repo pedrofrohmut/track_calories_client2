@@ -3,7 +3,7 @@ import MealService from "../services/MealService"
 import Meal, { isValidMealName, isValidMealCalories } from "../model/Meal"
 import { genericHandleInputChange, getValidationClassForInput } from "../util"
 
-const config = require("../cofig/config")
+const consts = require("../consts")
 
 class AddForm extends Component {
   constructor(props) {
@@ -78,12 +78,12 @@ class AddForm extends Component {
       MealService.addMeal(new Meal(0, name, calories))
         .then(() => {
           this.props.onSetAddingState()
-          this.props.onAlert("Meal Added!", config.ALERT_SUCCESS)
+          this.props.onAlert("Meal Added!", consts.ALERT_SUCCESS)
         })
         .catch(err => console.log(err)) // TODO: display cant conn state
     } else {
       this.props.onSetAddingState()
-      this.props.onAlert("Invalid Input. Please Check your values.", config.ALERT_FAILURE)
+      this.props.onAlert("Invalid Input. Please Check your values.", consts.ALERT_FAILURE)
     }
   }
 }

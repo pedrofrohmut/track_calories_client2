@@ -1,4 +1,4 @@
-const config = require("./cofig/config")
+const consts = require("../consts")
 
 export const genericHandleInputChange = (event, component) => {
   const name = event.target.name
@@ -10,10 +10,10 @@ export const genericHandleInputChange = (event, component) => {
 
 export const getValidationClassForInput = (value, validationCallback) => {
   if (value === "") {
-    return config.CSS_INPUT_NOT_VALIDATE
+    return consts.CSS_INPUT_NOT_VALIDATE
   } else if (validationCallback(value)) {
-    return config.CSS_INPUT_VALID
+    return consts.CSS_INPUT_VALID
   } else {
-    return config.CSS_INPUT_INVALID
+    return consts.CSS_INPUT_INVALID
   }
 }

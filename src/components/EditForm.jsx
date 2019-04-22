@@ -3,14 +3,12 @@ import { genericHandleInputChange, getValidationClassForInput } from "../util"
 import Meal, { isValidMealName, isValidMealCalories } from "../model/Meal"
 import MealService from "../services/MealService"
 
-const config = require("../cofig/config")
+const consts = require("../consts")
 
 /*
   TODO:
-    5 - take control of form inputs and link them to state + onChange (handleInputChange[Generic])  
-    6 - Add OnClick event for all buttons and repective handlers
-    7 - Form validation and dynamic validation classes at form inputs
-    8 - onSubmit + handle submit "ok" ? addState("ok","success") : editingState("fail", "failure")
+    1 - handleDelete
+    2 - handleBack
 */
 class EditForm extends Component {
   constructor(props) {
@@ -95,16 +93,22 @@ class EditForm extends Component {
       MealService.updateMeal(updatedMeal)
         .then(() => {
           this.props.onSetAddingState()
-          this.props.onAlert("Meal Updated!", config.ALERT_SUCCESS)
+          this.props.onAlert("Meal Updated!", consts.ALERT_SUCCESS)
         })
         .catch(err => console.log(err))
     } else {
       this.props.onSetEditingState()
-      this.props.onAlert("Invalid Input. Please Check your values.", config.ALERT_FAILURE)
+      this.props.onAlert("Invalid Input. Please Check your values.", consts.ALERT_FAILURE)
     }
   }
 
-  handleDelete = event => console.log("Click Delete")
+  handleDelete = event => {
+    const id = this.props.meal.id
+    MealService.removeMeal(id).then(() => {
+      this.props.onSetAddingState()
+      this.props.onAlert("Meal Removed!", consts.ALERT_SUCCESS)
+    })
+  }
 
   handleBack = event => console.log("Click Back")
 }

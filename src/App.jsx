@@ -2,11 +2,11 @@
  * Root Component For the entire App
  */
 import React, { Component } from "react"
+
 import AppAddingState from "./components/AppAddingState"
 import AppEditingState from "./components/AppEditingState"
 import AppLoadingState from "./components/AppLoadingState"
 import AppCantConnectState from "./components/AppCantConnectState"
-import MealService from "./services/MealService"
 import Alert from "./components/Alert"
 
 class App extends Component {
