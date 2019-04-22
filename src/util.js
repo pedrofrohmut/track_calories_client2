@@ -1,4 +1,4 @@
-const consts = require("../consts")
+const consts = require("./consts")
 
 export const genericHandleInputChange = (event, component) => {
   const name = event.target.name

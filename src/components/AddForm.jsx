@@ -10,7 +10,7 @@ class AddForm extends Component {
     super(props)
     this.state = {
       mealName: "",
-      mealCalories: 0,
+      mealCalories: "",
       mealNameClasses: "",
       mealCaloriesClasses: ""
     }

@@ -11,6 +11,8 @@ function Alert(props) {
     case consts.ALERT_FAILURE:
       alertClass = consts.CSS_ALERT_FAILURE
       break
+    default:
+      alertClass = ""
   }
   return <div className={alertClass}>{props.msg}</div>
 }
