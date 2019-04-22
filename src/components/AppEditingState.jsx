@@ -18,7 +18,7 @@ class AppEditingState extends Component {
     return (
       <>
         {/* Alert */}
-        {this.props.alertMsg && <Alert msg={this.props.alertMsg} type={this.props.alertType} />}
+        {this.props.hasAlert && <Alert msg={this.props.alertMsg} type={this.props.alertType} />}
 
         {/* Edit Form */}
         <EditForm

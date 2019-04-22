@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import MealService from "../services/MealService"
 
+const config = require("../cofig/config")
+
 class MealsList extends Component {
   constructor(props) {
     super(props)
@@ -36,7 +38,11 @@ class MealsList extends Component {
               {this.state.meals.map((meal, i) => (
                 <li key={i}>
                   <strong>{meal.name}</strong> <em>{meal.calories} Calories</em>
-                  <a href="#" className="edit-meal" onClick={e => this.props.onSetEditingState(meal.id, e)}>
+                  <a
+                    href="#"
+                    className="edit-meal"
+                    onClick={e => this.props.onSetEditingState(meal.id, "Teste MSG", config.ALERT_SUCCESS, e)}
+                  >
                     Edit <i className="fa fa-pencil" />
                   </a>
                 </li>

@@ -7,71 +7,15 @@ import AppEditingState from "./components/AppEditingState"
 import AppLoadingState from "./components/AppLoadingState"
 import AppCantConnectState from "./components/AppCantConnectState"
 import MealService from "./services/MealService"
+import Alert from "./components/Alert"
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      hasAlert: false,
       currentState: this.getAppAddingState()
     }
-  }
-
-  getAppAddingState = (alertMsg, alertType) => (
-    <AppAddingState
-      onSetEditingState={this.handleOnEdit}
-      onSetLoadingState={this.handleLoading}
-      onSetAddingState={this.handleOnAdd}
-      alertMsg={alertMsg}
-      alertType={alertType}
-    />
-  )
-
-  getAppEditingState = mealToEdit => <AppEditingState meal={mealToEdit} />
-
-  getAppLoadingState = loadingMsg => <AppLoadingState msg={loadingMsg} />
-
-  getAppCantConnectState = () => <AppCantConnectState />
-
-  displayAddState = (msg, type) => {
-    this.setState({
-      currentState: this.getAppAddingState(msg, type)
-    })
-  }
-
-  displayEditState = mealToEdit => {
-    this.setState({
-      currentState: this.getAppEditingState(mealToEdit)
-    })
-  }
-
-  displayLoadingState = msg => {
-    this.setState({
-      currentState: this.getAppLoadingState(msg)
-    })
-  }
-
-  displayCantConnectState = () => {
-    this.setState({
-      currentState: this.getAppCantConnectState()
-    })
-  }
-
-  handleOnEdit = (mealId, e) => {
-    e.preventDefault()
-    this.displayLoadingState()
-    MealService.getMeal(mealId)
-      .then(meal => {
-        this.displayEditState(meal)
-      })
-      .catch(err => console.log(err))
-  }
-
-  handleLoading = (msg, e) => {
-    this.displayLoadingState(msg)
-  }
-
-  handleOnAdd = (msg, type, e) => {
-    this.displayAddState(msg, type)
   }
 
   render() {
@@ -87,10 +31,57 @@ class App extends Component {
         </nav>
 
         {/* Content Container */}
-        <main className="container">{this.state.currentState}</main>
+        <main className="container">
+          {/* Alert */}
+          {this.state.hasAlert && this.state.alert}
+          {/* State */}
+          {this.state.currentState}
+        </main>
       </React.Fragment>
     )
   }
+
+  showAlert = (msg, type) => {
+    this.setState({
+      hasAlert: true,
+      alert: <Alert msg={msg} type={type} />
+    })
+    setTimeout(() => this.setState({ hasAlert: false }), 3000)
+  }
+
+  // Constant as method
+  getAppAddingState = () => (
+    <AppAddingState
+      onSetEditingState={this.handleOnEditState}
+      onSetLoadingState={this.handleOnLoadingState}
+      onSetAddingState={this.handleOnAddState}
+      onAlert={this.showAlert}
+    />
+  )
+
+  // Constant as method
+  getAppEditingState = mealToEdit => (
+    <AppEditingState
+      meal={mealToEdit}
+      onSetLoadingState={this.handleOnLoadingState}
+      onSetAddingState={this.handleOnAddState}
+      onAlert={this.showAlert}
+    />
+  )
+
+  // Constant as method
+  getAppLoadingState = loadingMsg => <AppLoadingState loadingMsg={loadingMsg} />
+
+  // Constant as method
+  getAppCantConnectState = () => <AppCantConnectState />
+
+  handleOnAddState = () => this.setState({ currentState: this.getAppAddingState() })
+
+  handleOnEditState = mealToEdit => this.setState({ currentState: this.getAppEditingState(mealToEdit) })
+
+  handleOnLoadingState = loadingMsg => this.setState({ currentState: this.getAppLoadingState(loadingMsg) })
+
+  handleOnCantConnectState = () => this.setState({ currentState: this.getAppCantConnectState() })
 }
 
 export default App

@@ -1,34 +1,21 @@
-import React, { Component } from "react"
-import Alert from "./Alert"
+import React from "react"
 import AddForm from "./AddForm"
 import MealsList from "./MealsList"
 
-class AppAddingState extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      hasAlert: props.alertMsg ? true : false
-    }
-  }
+function AppAddingState(props) {
+  return (
+    <>
+      {/* Add Form */}
+      <AddForm
+        onSetLoadingState={props.onSetLoadingState}
+        onSetAddingState={props.onSetAddingState}
+        onAlert={props.onAlert}
+      />
 
-  componentDidMount() {
-    setTimeout(() => this.setState({ hasAlert: false }), 1500)
-  }
-
-  render() {
-    return (
-      <>
-        {/* Alert */}
-        {this.props.alertMsg && <Alert msg={this.props.alertMsg} type={this.props.alertType} />}
-
-        {/* Add Form */}
-        <AddForm onSetLoadingState={this.props.onSetLoadingState} onSetAddingState={this.props.onSetAddingState} />
-
-        {/* Total Calories + Meals List */}
-        <MealsList onSetEditingState={this.props.onSetEditingState} />
-      </>
-    )
-  }
+      {/* Total Calories + Meals List */}
+      <MealsList onSetEditingState={props.onSetEditingState} />
+    </>
+  )
 }
 
 export default AppAddingState

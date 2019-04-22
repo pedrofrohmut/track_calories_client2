@@ -1,5 +1,9 @@
 import React, { Component } from "react"
 import { genericHandleInputChange } from "../util"
+import Meal, { isValidMealName, isValidMealCalories } from "../model/Meal"
+import MealService from "../services/MealService"
+
+const config = require("../cofig/config")
 
 /*
   TODO:
@@ -61,7 +65,44 @@ class EditForm extends Component {
 
   handleInputChange = event => genericHandleInputChange(event, this)
 
-  handleUpdate = event => console.log("Click Update")
+  handleUpdate = event => {
+    const name = this.state.mealName
+    const calories = parseInt(this.state.mealCalories)
+
+    if (isValidMealName(name) && isValidMealCalories(calories)) {
+      const id = this.props.meal.id
+      const updatedMeal = new Meal(id, name, calories)
+      MealService.updateMeal(updatedMeal)
+        .then(() => this.props.onSetAddingState("Meal Updated!", config.ALERT_SUCCESS))
+        .catch(err => console.log(err))
+      console.log("Valid Input. Updating ...", updatedMeal) // TODO: convert to show alert
+    } else {
+      this.props.onSetEditingState("Invalid Input. Please Check your values.", config.ALERT_FAILURE)
+      console.log("Invalid Input. Check your values", name, calories) // TODO: convert to show alert
+    }
+
+    // event.preventDefault();
+
+    // const mealId = $mealId.value;
+    // const mealName = $mealName.value;
+    // const mealCalories = parseInt($mealCalories.value);
+
+    // if (_isValidMealName(mealName) && _isValidMealCalories(mealCalories)) {
+    //   StateMachine.displayLoadingState("Updating the Server Database...");
+    //   MealDao
+    //     .updateMeal(new Meal(mealId, mealName, mealCalories))
+    //     .then(() => MealDao.getAllMeals())
+    //     .then(meals => {
+    //       UI.updateMealsList(meals, $mealsList);
+    //       UI.updateTotalCalories(meals, $totalCalories);
+    //       StateMachine.displayAddState()
+    //       UI.showAlert("Meal Updated", ALERT_SUCCESS);
+    //     })
+    //     .catch(() => StateMachine.displayCantConnectState());
+    // } else {
+    //   UI.showAlert("Invalid Input, Please Check Your Values", ALERT_FAILURE);
+    // }
+  }
 
   handleDelete = event => console.log("Click Delete")
 

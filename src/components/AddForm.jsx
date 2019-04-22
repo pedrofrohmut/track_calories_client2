@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import MealService from "../services/MealService"
-import Meal from "../model/Meal"
+import Meal, { isValidMealName, isValidMealCalories } from "../model/Meal"
 import { genericHandleInputChange } from "../util"
 
 const config = require("../cofig/config")
@@ -30,7 +30,7 @@ class AddForm extends Component {
               autoFocus
             />
             <input
-              type="text"
+              type="number"
               name="mealCalories"
               value={this.state.mealCalories}
               onChange={this.handleInputChange}
@@ -47,30 +47,23 @@ class AddForm extends Component {
 
   handleInputChange = event => genericHandleInputChange(event, this)
 
-  isValidMealName = name => {
-    const regex = /^[a-zA-Z\s]{2,20}$/
-    return regex.test(name)
-  }
-
-  isValidMealCalories = calories => {
-    return typeof calories === "number" && calories > 0
-  }
-
   handleSubmit = event => {
     event.preventDefault()
 
     const name = this.state.mealName
     const calories = parseInt(this.state.mealCalories)
 
-    if (this.isValidMealName(name) && this.isValidMealCalories(calories)) {
+    if (isValidMealName(name) && isValidMealCalories(calories)) {
       this.props.onSetLoadingState("Adding New Meal to database...")
       MealService.addMeal(new Meal(0, name, calories))
-        .then(() => this.props.onSetAddingState("Meal Added!", config.ALERT_SUCCESS))
+        .then(() => {
+          this.props.onSetAddingState()
+          this.props.onAlert("Meal Added!", config.ALERT_SUCCESS)
+        })
         .catch(err => console.log(err)) // TODO: display cant conn state
     } else {
-      this.props.onSetAddingState("Invalid Input. Please Check your values.", config.ALERT_FAILURE)
-      // TODO: show Alert
-      console.log("Form Values are not valid")
+      this.props.onSetAddingState()
+      this.props.onAlert("Invalid Input. Please Check your values.", config.ALERT_FAILURE)
     }
   }
 }
