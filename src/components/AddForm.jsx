@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import MealService from "../services/MealService"
 import Meal from "../model/Meal"
+import { genericHandleInputChange } from "../util"
 
 const config = require("../cofig/config")
 
@@ -44,13 +45,7 @@ class AddForm extends Component {
     )
   }
 
-  handleInputChange = event => {
-    const name = event.target.name
-    const value = event.target === "checkbox" ? event.target.checked : event.target.value
-    this.setState({
-      [name]: value
-    })
-  }
+  handleInputChange = event => genericHandleInputChange(event, this)
 
   isValidMealName = name => {
     const regex = /^[a-zA-Z\s]{2,20}$/
