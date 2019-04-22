@@ -1,3 +1,6 @@
+/*
+  MOBILE FIRST - MEDIA QUERIES FOR BIGGER SIZES
+*/
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -46,14 +49,76 @@ button:hover {
   padding: 0 0.5rem;
 }
 
+.form-container {
+  padding: 23px 25px 32px;
+}
+
+.form-container .form-title {
+  color: #333;
+  font-size: 52px;
+  margin-bottom: 32px;
+  font-family: "Arizonia", cursive;
+}
+
+.form-container .form-input-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  grid-row-gap: 25px;
+}
+
+.form-container input {
+  border: 0;
+  border-bottom: 3px solid #ccc;
+  padding: 7px 12px;
+  font-size: 17px;
+  width: 100%;
+}
+
+.form-container .input-not-validated {
+  border-bottom: 3px solid #ccc;
+}
+
+.form-container .input-invalid {
+  border-bottom: 3px solid rgba(226, 76, 62, 0.5);
+}
+
+.form-container .input-invalid:focus {
+  -webkit-box-shadow: rgba(226, 76, 62, 0.5) 0px 0px 0px 3px;
+          box-shadow: rgba(226, 76, 62, 0.5) 0px 0px 0px 3px;
+}
+
+.form-container .input-valid {
+  border-bottom: 3px solid rgba(26, 199, 49, 0.5);
+}
+
+.form-container .input-valid:focus {
+  -webkit-box-shadow: rgba(26, 199, 49, 0.5) 0px 0px 0px 3px;
+          box-shadow: rgba(26, 199, 49, 0.5) 0px 0px 0px 3px;
+}
+
 /* Medium */
 @media (min-width: 481px) {
   .container {
     width: 95%;
   }
+  .form-container {
+    border-radius: 0.3em;
+    -webkit-box-shadow: #e3e3e3 3px 2px 7px 3px;
+            box-shadow: #e3e3e3 3px 2px 7px 3px;
+  }
 }
 
 /* Large */
+@media (min-width: 769px) {
+  .form-container .form-input-container {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+    grid-column-gap: 25px;
+  }
+}
+
 /* Extra Large*/
 .navbar {
   background-color: #066d;
@@ -200,62 +265,8 @@ button:hover {
   background-color: #faa1a1;
 }
 
-.add-form-container {
-  padding: 23px 25px 32px;
-}
-
-.add-form-container .form-title {
-  color: #333;
-  font-size: 52px;
-  margin-bottom: 32px;
-  font-family: "Arizonia", cursive;
-}
-
-.add-form-container .input-container {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr;
-      grid-template-columns: 1fr;
-  grid-row-gap: 7px;
-}
-
-.add-form-container input {
-  border: 0;
-  border-bottom: 3px solid #888;
-  padding: 7px 12px;
-  font-size: 17px;
-  width: 100%;
-  margin-bottom: 32px;
-}
-
-.add-form-container .invalid-input {
-  -webkit-box-shadow: #f55 0px 0px 7px 4px;
-          box-shadow: #f55 0px 0px 7px 4px;
-}
-
-.add-form-container .valid-input {
-  -webkit-box-shadow: #23a072 0px 0px 7px 4px;
-          box-shadow: #23a072 0px 0px 7px 4px;
-}
-
 .add-form-container .add-btn {
   background-color: #4747d1;
-}
-
-@media (min-width: 481px) {
-  .add-form-container {
-    border-radius: 0.3em;
-    -webkit-box-shadow: #e3e3e3 3px 2px 7px 3px;
-            box-shadow: #e3e3e3 3px 2px 7px 3px;
-  }
-}
-
-@media (min-width: 769px) {
-  .add-form-container .input-container {
-    -ms-grid-columns: 1fr 1fr;
-        grid-template-columns: 1fr 1fr;
-    grid-column-gap: 25px;
-  }
 }
 
 .total-calories-header,
@@ -294,44 +305,6 @@ button:hover {
   float: right;
 }
 
-.edit-form-container {
-  padding: 23px 25px 32px;
-}
-
-.edit-form-container .form-title {
-  color: #333;
-  font-size: 52px;
-  margin-bottom: 32px;
-  font-family: "Arizonia", cursive;
-}
-
-.edit-form-container .input-container {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr;
-      grid-template-columns: 1fr;
-  grid-row-gap: 7px;
-}
-
-.edit-form-container input {
-  border: 0;
-  border-bottom: 3px solid #888;
-  padding: 7px 12px;
-  font-size: 17px;
-  width: 100%;
-  margin-bottom: 32px;
-}
-
-.edit-form-container .invalid-input {
-  -webkit-box-shadow: #f55 0px 0px 7px 4px;
-          box-shadow: #f55 0px 0px 7px 4px;
-}
-
-.edit-form-container .valid-input {
-  -webkit-box-shadow: #23a072 0px 0px 7px 4px;
-          box-shadow: #23a072 0px 0px 7px 4px;
-}
-
 .edit-form-container button {
   margin-right: 15px;
 }
@@ -350,20 +323,4 @@ button:hover {
 
 .edit-form-container .back-btn {
   background-color: #64505a;
-}
-
-@media (min-width: 481px) {
-  .edit-form-container {
-    border-radius: 0.3em;
-    -webkit-box-shadow: #e3e3e3 3px 2px 7px 3px;
-            box-shadow: #e3e3e3 3px 2px 7px 3px;
-  }
-}
-
-@media (min-width: 769px) {
-  .edit-form-container .input-container {
-    -ms-grid-columns: 1fr 1fr;
-        grid-template-columns: 1fr 1fr;
-    grid-column-gap: 25px;
-  }
 }

@@ -1,6 +1,6 @@
 import React from "react"
 
-function AppCantConnectState() {
+function AppCantConnectState(props) {
   return (
     <React.Fragment>
       <div className="cant-connect-container" id="cant-connect">

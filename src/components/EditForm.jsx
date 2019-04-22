@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { genericHandleInputChange } from "../util"
+import { genericHandleInputChange, getValidationClassForInput } from "../util"
 import Meal, { isValidMealName, isValidMealCalories } from "../model/Meal"
 import MealService from "../services/MealService"
 
@@ -17,7 +17,9 @@ class EditForm extends Component {
     super(props)
     this.state = {
       mealName: props.meal.name,
-      mealCalories: props.meal.calories
+      mealCalories: props.meal.calories,
+      mealNameClasses: "",
+      mealCaloriesClasses: ""
     }
   }
 
@@ -25,16 +27,19 @@ class EditForm extends Component {
     const { mealName, mealCalories } = this.state
 
     return (
-      <div className="edit-form-container">
+      <div className="edit-form-container form-container">
         <div className="form-title">Add Meals</div>
 
         {/* Form Fields */}
-        <div className="input-container">
+        <div className="form-input-container">
           <input
             type="text"
             name="mealName"
             value={mealName}
             onChange={this.handleInputChange}
+            onBlur={this.handleBlur}
+            onKeyUp={this.handleKeyUp}
+            className={this.state.mealNameClasses}
             placeholder="Meal Name"
             autoFocus
           />
@@ -43,6 +48,9 @@ class EditForm extends Component {
             name="mealCalories"
             value={mealCalories}
             onChange={this.handleInputChange}
+            onBlur={this.handleBlur}
+            onKeyUp={this.handleKeyUp}
+            className={this.state.mealCaloriesClasses}
             placeholder="Meal Calories"
           />
         </div>
@@ -65,7 +73,19 @@ class EditForm extends Component {
 
   handleInputChange = event => genericHandleInputChange(event, this)
 
-  handleUpdate = event => {
+  handleBlur = () => this.validateForm()
+
+  handleKeyUp = () => this.validateForm()
+
+  validateForm = () => {
+    const { mealName, mealCalories } = this.state
+    this.setState({
+      mealNameClasses: getValidationClassForInput(mealName, isValidMealName),
+      mealCaloriesClasses: getValidationClassForInput(parseInt(mealCalories), isValidMealCalories)
+    })
+  }
+
+  handleUpdate = () => {
     const name = this.state.mealName
     const calories = parseInt(this.state.mealCalories)
 

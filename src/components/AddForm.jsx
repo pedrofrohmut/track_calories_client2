@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import MealService from "../services/MealService"
 import Meal, { isValidMealName, isValidMealCalories } from "../model/Meal"
-import { genericHandleInputChange } from "../util"
+import { genericHandleInputChange, getValidationClassForInput } from "../util"
 
 const config = require("../cofig/config")
 
@@ -10,22 +10,27 @@ class AddForm extends Component {
     super(props)
     this.state = {
       mealName: "",
-      mealCalories: 0
+      mealCalories: 0,
+      mealNameClasses: "",
+      mealCaloriesClasses: ""
     }
   }
 
   render() {
     return (
-      <div className="add-form-container">
+      <div className="add-form-container form-container">
         <div className="form-title">Add Meals</div>
 
         <form onSubmit={this.handleSubmit}>
-          <div className="input-container">
+          <div className="form-input-container">
             <input
               type="text"
               name="mealName"
               value={this.state.mealName}
               onChange={this.handleInputChange}
+              onKeyUp={this.handleKeyUp}
+              onBlur={this.handleBlur}
+              className={this.state.mealNameClasses}
               placeholder="Meal Name"
               autoFocus
             />
@@ -34,6 +39,9 @@ class AddForm extends Component {
               name="mealCalories"
               value={this.state.mealCalories}
               onChange={this.handleInputChange}
+              onKeyUp={this.handleKeyUp}
+              onBlur={this.handleBlur}
+              className={this.state.mealCaloriesClasses}
               placeholder="Meal Calories"
             />
           </div>
@@ -46,6 +54,18 @@ class AddForm extends Component {
   }
 
   handleInputChange = event => genericHandleInputChange(event, this)
+
+  handleKeyUp = () => this.validateAddForm()
+
+  handleBlur = () => this.validateAddForm()
+
+  validateAddForm = () => {
+    const { mealName, mealCalories } = this.state
+    this.setState({
+      mealNameClasses: getValidationClassForInput(mealName, isValidMealName),
+      mealCaloriesClasses: getValidationClassForInput(parseInt(mealCalories), isValidMealCalories)
+    })
+  }
 
   handleSubmit = event => {
     event.preventDefault()
