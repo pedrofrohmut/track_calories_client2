@@ -1,11 +1,12 @@
 import React, { Component } from "react"
 import MealService from "../services/MealService"
+import Loading from "./Loading"
 
 class MealsList extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      emptyDBMsg: "",
+      isLoading: true,
       totalCalories: 0,
       meals: []
     }
@@ -15,25 +16,26 @@ class MealsList extends Component {
     MealService.getAllMeals()
       .then(meals => {
         const totalCalories = meals.reduce((acc, curr) => acc + curr.calories, 0)
-        this.setState({ meals, totalCalories })
-        if (meals.length === 0) {
-          this.setState({ emptyDBMsg: "Its empty! No meals to list from database." })
-        }
+        const isLoading = false
+        this.setState({ meals, totalCalories, isLoading })
       })
       .catch(err => console.log(err))
   }
 
   render() {
+    const { isLoading, totalCalories, meals } = this.state
     return (
       <>
-        {this.state.emptyDBMsg && <p className="empty-db-msg">{this.state.emptyDBMsg}</p>}
-
-        {this.state.meals.length > 0 && (
+        {isLoading ? (
+          <Loading loadingMsg={"Getting Meals from database..."} />
+        ) : meals.length === 0 ? (
+          <p className="empty-db-msg">Its empty! No meals to list from database.</p>
+        ) : (
           <>
-            <h5 className="total-calories-header">Total Calories: {this.state.totalCalories}</h5>
+            <h5 className="total-calories-header">Total Calories: {totalCalories}</h5>
 
             <ul className="meals-list">
-              {this.state.meals.map((meal, i) => (
+              {meals.map((meal, i) => (
                 <li key={i}>
                   <strong>{meal.name}</strong> <em>{meal.calories} Calories</em>
                   <a href="#" className="edit-meal" onClick={e => this.handleClick(meal.id, e)}>

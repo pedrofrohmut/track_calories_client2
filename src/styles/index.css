@@ -134,82 +134,8 @@ button:hover {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.form-container {
-  padding: 23px 25px 32px;
-}
-
-.form-container .form-title {
-  color: #333;
-  font-size: 52px;
-  margin-bottom: 32px;
-  font-family: "Arizonia", cursive;
-}
-
-.form-container .input-container {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr;
-      grid-template-columns: 1fr;
-  grid-row-gap: 7px;
-}
-
-.form-container input {
-  border: 0;
-  border-bottom: 3px solid #888;
-  padding: 7px 12px;
-  font-size: 17px;
-  width: 100%;
-  margin-bottom: 32px;
-}
-
-.form-container .invalid-input {
-  -webkit-box-shadow: #f55 0px 0px 7px 4px;
-          box-shadow: #f55 0px 0px 7px 4px;
-}
-
-.form-container .valid-input {
-  -webkit-box-shadow: #23a072 0px 0px 7px 4px;
-          box-shadow: #23a072 0px 0px 7px 4px;
-}
-
-.form-container .button-container {
-  display: inline-block;
-}
-
-.form-container .button-container button {
-  margin-right: 15px;
-}
-
-.form-container .button-container button:last-child {
-  margin-right: 0px;
-}
-
-.form-container .update-btn {
-  background-color: #23a072;
-}
-
-.form-container .delete-btn {
-  background-color: #f55;
-}
-
-.form-container .back-btn {
-  background-color: #64505a;
-}
-
-@media (min-width: 481px) {
-  .form-container {
-    border-radius: 0.3em;
-    -webkit-box-shadow: #e3e3e3 3px 2px 7px 3px;
-            box-shadow: #e3e3e3 3px 2px 7px 3px;
-  }
-}
-
-@media (min-width: 769px) {
-  .form-container .input-container {
-    -ms-grid-columns: 1fr 1fr;
-        grid-template-columns: 1fr 1fr;
-    grid-column-gap: 25px;
-  }
+.loading-container {
+  margin: 25px 0;
 }
 
 .loading-container img {

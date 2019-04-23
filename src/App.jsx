@@ -79,7 +79,10 @@ class App extends Component {
 
   handleOnEditState = mealToEdit => this.setState({ currentState: this.getAppEditingState(mealToEdit) })
 
-  handleOnLoadingState = loadingMsg => this.setState({ currentState: this.getAppLoadingState(loadingMsg) })
+  handleOnLoadingState = loadingMsg => {
+    console.log(loadingMsg)
+    this.setState({ currentState: this.getAppLoadingState(loadingMsg) })
+  }
 
   handleOnCantConnectState = () => this.setState({ currentState: this.getAppCantConnectState() })
 }

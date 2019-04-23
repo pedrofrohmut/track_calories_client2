@@ -5,11 +5,6 @@ import MealService from "../services/MealService"
 
 const consts = require("../consts")
 
-/*
-  TODO:
-    1 - handleDelete
-    2 - handleBack
-*/
 class EditForm extends Component {
   constructor(props) {
     super(props)
@@ -102,15 +97,18 @@ class EditForm extends Component {
     }
   }
 
-  handleDelete = event => {
-    const id = this.props.meal.id
-    MealService.removeMeal(id).then(() => {
-      this.props.onSetAddingState()
-      this.props.onAlert("Meal Removed!", consts.ALERT_SUCCESS)
-    })
+  handleDelete = () => {
+    if (window.confirm("Are you sure you want to delete?")) {
+      this.props.onSetLoadingState("Removing Meal from database...")
+      const id = this.props.meal.id
+      MealService.removeMeal(id).then(() => {
+        this.props.onSetAddingState()
+        this.props.onAlert("Meal Removed!", consts.ALERT_SUCCESS)
+      })
+    }
   }
 
-  handleBack = event => console.log("Click Back")
+  handleBack = () => this.props.onSetAddingState()
 }
 
 export default EditForm
